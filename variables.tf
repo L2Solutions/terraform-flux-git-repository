@@ -50,3 +50,9 @@ variable "git_implementation" {
   default     = "go-git"
   type        = string
 }
+
+variable "known_hosts" {
+  description = "List of known SSH hosts for key"
+  default     = []
+  type        = list(string)
+}
