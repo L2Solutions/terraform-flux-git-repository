@@ -1,26 +1,44 @@
 locals {
+  name      = var.name
+  namespace = var.namespace
+  url       = var.url
+  interval  = var.interval
+  ref       = var.ref
+
+  git_implementation = var.git_implementation
+  create_ssh_key     = var.create_ssh_key
+  existing_secret    = var.existing_secret
+  known_hosts        = var.known_hosts
+}
+
+locals {
+  secret_name        = local.create_ssh_key ? "git-repository-${local.name}" : local.existing_secret
+  known_hosts_string = join("\n", local.known_hosts)
+}
+
+locals {
   git_repository = {
     apiVersion = "source.toolkit.fluxcd.io/v1beta1"
     kind       = "GitRepository"
     metadata = {
-      name       = var.name
-      namespace  = var.namespace
+      name       = local.name
+      namespace  = local.namespace
       finalizers = ["finalizers.fluxcd.io"]
     }
     spec = merge(
       {
-        interval          = var.interval
-        url               = var.url
-        gitImplementation = var.git_implementation
+        interval          = local.interval
+        url               = local.url
+        gitImplementation = local.git_implementation
         ref = {
-          for k, v in var.ref :
+          for k, v in local.ref :
           k => v if v != null
         }
       },
-      var.create_ssh_key || var.existing_secret != null
+      local.secret_name != null
       ? {
         secretRef = {
-          name = var.create_ssh_key ? "git-repository-${var.name}" : var.existing_secret
+          name = local.secret_name
         }
       }
       : {}
