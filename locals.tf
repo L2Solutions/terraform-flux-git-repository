@@ -3,7 +3,12 @@ locals {
   namespace = var.namespace
   url       = var.url
   interval  = var.interval
-  ref       = var.ref
+  ref = defaults(
+    var.ref,
+    {
+      branch = "main"
+    }
+  )
 
   git_implementation = var.git_implementation
   create_ssh_key     = var.create_ssh_key

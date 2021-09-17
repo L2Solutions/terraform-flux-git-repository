@@ -22,9 +22,8 @@ variable "interval" {
 
 variable "ref" {
   description = "Repo refs object"
-  default = {
-    branch = "main"
-  }
+  default     = {}
+
   type = object({
     branch = optional(string)
     commit = optional(string)
