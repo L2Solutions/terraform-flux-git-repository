@@ -8,7 +8,7 @@ provider "kubernetes" {
 
 module "flux-install" {
   count   = 1
-  source  = "L2Solutions/install/flux"
+  source  = "OmniTeqSource/install/flux"
   version = "0.0.24"
 }
 
@@ -23,7 +23,7 @@ module "git-repository-basic" {
   source = "../../"
 
   name = "basic"
-  url  = "https://github.com/L2Solutions/terraform-flux-git-repository.git"
+  url  = "https://github.com/OmniTeqSource/terraform-flux-git-repository.git"
 
   # This will prevent a condition where the namespace cannot be removed if a CR for a CRD still exists.
   depends_on = [module.flux-install]
@@ -35,7 +35,7 @@ module "git-repository-ssh" {
   source = "../../"
 
   name     = "ssh"
-  url      = "https://github.com/L2Solutions/terraform-flux-git-repository.git"
+  url      = "https://github.com/OmniTeqSource/terraform-flux-git-repository.git"
   interval = "1m"
 
   create_ssh_key = true
