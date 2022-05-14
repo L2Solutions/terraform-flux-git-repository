@@ -22,8 +22,8 @@ locals {
 }
 
 locals {
-  git_repository = {
-    apiVersion = "source.toolkit.fluxcd.io/v1beta1"
+  manifest = {
+    apiVersion = "source.toolkit.fluxcd.io/v1beta2"
     kind       = "GitRepository"
     metadata = {
       name       = local.name

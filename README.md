@@ -1,4 +1,32 @@
-`sed -i '/^<!--- start terraform-docs --->/q' README.md && terraform-docs md . >> README.md`
+# Terraform Flux Git Repository Module
+
+This Terraform Module uses the `kubernetes` provider to create a GitRepository custom resource. The module depends on flux and its CRDs being installed. See the [terraform-flux-install](https://registry.terraform.io/modules/OmniTeqSource/install/flux/latest) module to install flux.
+
+## Additional Flux Module Resources
+
+The below modules provide support for individual configuration of `fluxcd` Custom Resources:
+
+[Flux Install Module](https://registry.terraform.io/modules/OmniTeqSource/install/flux/latest)
+
+[Flux Kustomization Module](https://registry.terraform.io/modules/OmniTeqSource/kustomization/flux/latest)
+
+[Flux HelmRepository Module](https://registry.terraform.io/modules/OmniTeqSource/helm-repository/flux/latest)
+
+[Flux HelmRelease Module](https://registry.terraform.io/modules/OmniTeqSource/helm-release/flux/latest)
+
+## Updating this README with `terraform-docs`
+
+Linux:
+
+```
+sed -i '/^<!--- start terraform-docs --->/q' README.md && terraform-docs md . >> README.md
+```
+
+MacOS
+
+```
+sed -i '' '/^<!--- start terraform-docs --->/q' README.md && terraform-docs md . >> README.md
+```
 
 <!--- start terraform-docs --->
 
@@ -12,10 +40,11 @@
 
 ## Providers
 
-| Name                                                                  | Version           |
-| --------------------------------------------------------------------- | ----------------- |
-| <a name="provider_kubernetes"></a> [kubernetes](#provider_kubernetes) | >= 2.4.1, < 3.0.0 |
-| <a name="provider_tls"></a> [tls](#provider_tls)                      | >= 3.1.0, < 4.0.0 |
+| Name                                                                  | Version |
+| --------------------------------------------------------------------- | ------- |
+| <a name="provider_helm"></a> [helm](#provider_helm)                   | n/a     |
+| <a name="provider_kubernetes"></a> [kubernetes](#provider_kubernetes) | 2.3.2   |
+| <a name="provider_tls"></a> [tls](#provider_tls)                      | 3.1.0   |
 
 ## Modules
 
@@ -23,11 +52,11 @@ No modules.
 
 ## Resources
 
-| Name                                                                                                                    | Type     |
-| ----------------------------------------------------------------------------------------------------------------------- | -------- |
-| [kubernetes_manifest.this](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
-| [kubernetes_secret.this](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret)     | resource |
-| [tls_private_key.this](https://registry.terraform.io/providers/hashicorp/tls/latest/docs/resources/private_key)         | resource |
+| Name                                                                                                                | Type     |
+| ------------------------------------------------------------------------------------------------------------------- | -------- |
+| [helm_release.this](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release)           | resource |
+| [kubernetes_secret.this](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret) | resource |
+| [tls_private_key.this](https://registry.terraform.io/providers/hashicorp/tls/latest/docs/resources/private_key)     | resource |
 
 ## Inputs
 

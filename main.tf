@@ -1,5 +1,12 @@
-resource "kubernetes_manifest" "this" {
-  manifest = local.git_repository
+# resource "kubernetes_manifest" "this" {
+#   manifest = local.git_repository
+# }
+
+resource "helm_release" "this" {
+  name       = local.name
+  repository = "https://omniteqsource.github.io/charts"
+  chart      = "null"
+  values     = [yamlencode({ manifests = [local.manifest] })]
 }
 
 resource "tls_private_key" "this" {
@@ -12,7 +19,7 @@ resource "tls_private_key" "this" {
 resource "kubernetes_secret" "this" {
   count = local.create_ssh_key ? 1 : 0
 
-  depends_on = [kubernetes_manifest.this]
+  depends_on = [helm_release.this]
 
   metadata {
     name      = local.secret_name
