@@ -1,7 +1,3 @@
-# resource "kubernetes_manifest" "this" {
-#   manifest = local.git_repository
-# }
-
 resource "helm_release" "this" {
   name       = local.name
   repository = "https://omniteqsource.github.io/charts"

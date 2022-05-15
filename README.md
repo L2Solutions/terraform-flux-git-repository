@@ -1,6 +1,23 @@
 # Terraform Flux Git Repository Module
 
-This Terraform Module uses the `kubernetes` provider to create a GitRepository custom resource. The module depends on flux and its CRDs being installed. See the [terraform-flux-install](https://registry.terraform.io/modules/OmniTeqSource/install/flux/latest) module to install flux.
+This Terraform Module uses the `kubernetes` provider to create a GitRepository custom resource. The module depends on flux and its CRDs being installed. See the [`terraform-flux-install`](https://registry.terraform.io/modules/OmniTeqSource/install/flux/latest) module to install flux.
+
+All issues should be reported in the [GitHub repository](https://github.com/OmniTeqSource/terraform-flux-install/issues)
+
+## Usage
+
+For full usage, see the examples:
+
+- On the Terraform Registry, use the Examples dropdown near the top of the page
+- In GitHub, navigate to the [Examples](examples/) directory
+
+## Why?
+
+While we use the `kubernetes` provider and its `kubernetes_manifest` resource for [`terraform-flux-install`](https://registry.terraform.io/modules/OmniTeqSource/install/flux/latest), the `kubernetes_manifest` resource uses server-side apply, preventing a one stage apply of flux and initial configuration. Here we use the `helm` providers' `helm_release` resource. This allows for one apply to install flux and configure the initial `git`/`helm` repositories
+
+## Why not use the `kubectl` provider?
+
+We love the kubectl provider, but opted to stick with official providers.
 
 ## Additional Flux Module Resources
 
