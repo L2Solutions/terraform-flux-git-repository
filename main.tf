@@ -1,5 +1,15 @@
+resource "random_string" "this" {
+  keepers = {
+    name = local.name
+  }
+
+  upper   = false
+  special = false
+  length  = 8
+}
+
 resource "helm_release" "this" {
-  name       = local.name
+  name       = join("-", [local.name, random_string.this.id])
   repository = "https://omniteqsource.github.io/charts"
   chart      = "null"
   values     = [yamlencode({ manifests = [local.manifest] })]
@@ -18,8 +28,10 @@ resource "kubernetes_secret" "this" {
   depends_on = [helm_release.this]
 
   metadata {
-    name      = local.secret_name
-    namespace = local.namespace
+    name        = local.secret_name
+    namespace   = local.namespace
+    annotations = {}
+    labels      = {}
   }
 
   data = {
