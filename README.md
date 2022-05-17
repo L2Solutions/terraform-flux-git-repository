@@ -49,7 +49,7 @@ The below modules provide support for individual configuration of `fluxcd` Custo
 | <a name="provider_helm"></a> [helm](#provider\_helm) | 2.5.1 |
 | <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | 2.11.0 |
 | <a name="provider_random"></a> [random](#provider\_random) | 3.1.3 |
-| <a name="provider_tls"></a> [tls](#provider\_tls) | 3.3.0 |
+| <a name="provider_tls"></a> [tls](#provider\_tls) | 3.4.0 |
 
 ## Modules
 
@@ -75,6 +75,7 @@ No modules.
 | <a name="input_known_hosts"></a> [known\_hosts](#input\_known\_hosts) | List of known SSH hosts for key | `list(string)` | `[]` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name of the GitRepository resource | `string` | n/a | yes |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | Namespace location to create the GitRepository | `string` | `"flux-system"` | no |
+| <a name="input_random_suffix"></a> [random\_suffix](#input\_random\_suffix) | Add a random alpha-numeric suffix to resource names(prevents helm release collision) | `bool` | `true` | no |
 | <a name="input_ref"></a> [ref](#input\_ref) | Repo refs object | <pre>object({<br>    branch = optional(string)<br>    commit = optional(string)<br>    tag    = optional(string)<br>    semver = optional(string)<br>  })</pre> | `{}` | no |
 | <a name="input_url"></a> [url](#input\_url) | URL of the git repository | `string` | n/a | yes |
 
@@ -82,5 +83,9 @@ No modules.
 
 | Name | Description |
 |------|-------------|
+| <a name="output_kind"></a> [kind](#output\_kind) | Kubernetes API Kind |
+| <a name="output_manifest"></a> [manifest](#output\_manifest) | n/a |
+| <a name="output_name"></a> [name](#output\_name) | Name of the object with suffix(if enabled) |
+| <a name="output_namespace"></a> [namespace](#output\_namespace) | n/a |
 | <a name="output_ssh_key"></a> [ssh\_key](#output\_ssh\_key) | SSH public key for git integration |
 <!-- END_TF_DOCS -->
