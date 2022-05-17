@@ -1,6 +1,7 @@
 resource "random_string" "this" {
   keepers = {
-    name = local.name
+    # Using `var.name` is required here to prevent cyclic dependency.
+    name = var.name
   }
 
   upper   = false
@@ -9,7 +10,7 @@ resource "random_string" "this" {
 }
 
 resource "helm_release" "this" {
-  name       = join("-", [local.name, random_string.this.id])
+  name       = local.name
   repository = "https://omniteqsource.github.io/charts"
   chart      = "null"
   values     = [yamlencode({ manifests = [local.manifest] })]
