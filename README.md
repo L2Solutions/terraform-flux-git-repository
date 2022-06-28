@@ -2,7 +2,7 @@
 
 This Terraform Module uses the `kubernetes` provider to create a GitRepository custom resource. The module depends on flux and its CRDs being installed. See the [`terraform-flux-install`](https://registry.terraform.io/modules/skyfjall/install/flux/latest) module to install flux.
 
-All issues should be reported in the [GitHub repository](https://github.com/skyfjall/terraform-flux-install/issues)
+All issues should be reported in the [GitHub repository](https://github.com/skyfjell/terraform-flux-install/issues)
 
 ## Usage
 
