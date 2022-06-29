@@ -1,6 +1,6 @@
 # Terraform Flux Git Repository Module
 
-This Terraform Module uses the `kubernetes` provider to create a GitRepository custom resource. The module depends on flux and its CRDs being installed. See the [`terraform-flux-install`](https://registry.terraform.io/modules/skyfjall/install/flux/latest) module to install flux.
+This Terraform Module uses the `kubernetes` provider to create a GitRepository custom resource. The module depends on flux and its CRDs being installed. See the [`terraform-flux-install`](https://registry.terraform.io/modules/skyfjell/install/flux/latest) module to install flux.
 
 All issues should be reported in the [GitHub repository](https://github.com/skyfjell/terraform-flux-install/issues)
 
@@ -13,7 +13,7 @@ For full usage, see the examples:
 
 ## Why?
 
-While we use the `kubernetes` provider and its `kubernetes_manifest` resource for [`terraform-flux-install`](https://registry.terraform.io/modules/skyfjall/install/flux/latest), the `kubernetes_manifest` resource uses server-side apply, preventing a one stage apply of flux and initial configuration. Here we use the `helm` providers' `helm_release` resource. This allows for one apply to install flux and configure the initial `git`/`helm` repositories
+While we use the `kubernetes` provider and its `kubernetes_manifest` resource for [`terraform-flux-install`](https://registry.terraform.io/modules/skyfjell/install/flux/latest), the `kubernetes_manifest` resource uses server-side apply, preventing a one stage apply of flux and initial configuration. Here we use the `helm` providers' `helm_release` resource. This allows for one apply to install flux and configure the initial `git`/`helm` repositories
 
 ## Why not use the `kubectl` provider?
 
@@ -23,13 +23,13 @@ We love the kubectl provider, but opted to stick with official providers.
 
 The below modules provide support for individual configuration of `fluxcd` Custom Resources:
 
-[Flux Install Module](https://registry.terraform.io/modules/skyfjall/install/flux/latest)
+[Flux Install Module](https://registry.terraform.io/modules/skyfjell/install/flux/latest)
 
-[Flux Kustomization Module](https://registry.terraform.io/modules/skyfjall/kustomization/flux/latest)
+[Flux Kustomization Module](https://registry.terraform.io/modules/skyfjell/kustomization/flux/latest)
 
-[Flux HelmRepository Module](https://registry.terraform.io/modules/skyfjall/helm-repository/flux/latest)
+[Flux HelmRepository Module](https://registry.terraform.io/modules/skyfjell/helm-repository/flux/latest)
 
-[Flux HelmRelease Module](https://registry.terraform.io/modules/skyfjall/helm-release/flux/latest)
+[Flux HelmRelease Module](https://registry.terraform.io/modules/skyfjell/helm-release/flux/latest)
 
 <!-- BEGIN_TF_DOCS -->
 

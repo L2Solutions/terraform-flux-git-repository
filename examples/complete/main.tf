@@ -11,15 +11,15 @@ provider "helm" {
 }
 
 module "flux-install" {
-  source  = "OmniTeqSource/install/flux"
-  version = "0.2.0"
+  source  = "skyfjell/install/flux"
+  version = "1.0.1"
 }
 
 module "git-repository-basic" {
   source = "../../"
 
   name = "basic"
-  url  = "https://github.com/OmniTeqSource/terraform-flux-git-repository.git"
+  url  = "https://github.com/skyfjell/terraform-flux-git-repository.git"
 
   # This will prevent a condition where the namespace cannot be removed if a CR for a CRD still exists.
   depends_on = [module.flux-install]
@@ -29,7 +29,7 @@ module "git-repository-ssh" {
   source = "../../"
 
   name     = "ssh"
-  url      = "https://github.com/OmniTeqSource/terraform-flux-git-repository.git"
+  url      = "https://github.com/skyfjell/terraform-flux-git-repository.git"
   interval = "1m"
 
   create_ssh_key = true
