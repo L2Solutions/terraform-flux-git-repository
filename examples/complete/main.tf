@@ -12,7 +12,7 @@ provider "helm" {
 
 module "flux-install" {
   source  = "skyfjell/install/flux"
-  version = "1.0.1"
+  version = "1.0.4"
 }
 
 module "git-repository-basic" {

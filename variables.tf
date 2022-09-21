@@ -25,7 +25,7 @@ variable "ref" {
   default     = {}
 
   type = object({
-    branch = optional(string)
+    branch = optional(string, "main")
     commit = optional(string)
     tag    = optional(string)
     semver = optional(string)
