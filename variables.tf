@@ -55,9 +55,3 @@ variable "known_hosts" {
   default     = []
   type        = list(string)
 }
-
-variable "random_suffix" {
-  description = "Add a random alpha-numeric suffix to resource names(prevents helm release collision)"
-  default     = true
-  type        = bool
-}

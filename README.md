@@ -39,16 +39,14 @@ The below modules provide support for individual configuration of `fluxcd` Custo
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0, < 2.0.0 |
 | <a name="requirement_helm"></a> [helm](#requirement\_helm) | >= 2.5.1, < 3.0.0 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | >= 2.4.1, < 3.0.0 |
-| <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.1.3, < 4.0.0 |
 | <a name="requirement_tls"></a> [tls](#requirement\_tls) | >= 3.1.0, < 4.0.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_helm"></a> [helm](#provider\_helm) | 2.6.0 |
-| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | 2.13.1 |
-| <a name="provider_random"></a> [random](#provider\_random) | 3.4.3 |
+| <a name="provider_helm"></a> [helm](#provider\_helm) | 2.7.1 |
+| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | 2.14.0 |
 | <a name="provider_tls"></a> [tls](#provider\_tls) | 3.4.0 |
 
 ## Modules
@@ -61,7 +59,6 @@ No modules.
 |------|------|
 | [helm_release.this](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 | [kubernetes_secret.this](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret) | resource |
-| [random_string.this](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
 | [tls_private_key.this](https://registry.terraform.io/providers/hashicorp/tls/latest/docs/resources/private_key) | resource |
 
 ## Inputs
@@ -75,7 +72,6 @@ No modules.
 | <a name="input_known_hosts"></a> [known\_hosts](#input\_known\_hosts) | List of known SSH hosts for key | `list(string)` | `[]` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name of the GitRepository resource | `string` | n/a | yes |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | Namespace location to create the GitRepository | `string` | `"flux-system"` | no |
-| <a name="input_random_suffix"></a> [random\_suffix](#input\_random\_suffix) | Add a random alpha-numeric suffix to resource names(prevents helm release collision) | `bool` | `true` | no |
 | <a name="input_ref"></a> [ref](#input\_ref) | Repo refs object | <pre>object({<br>    branch = optional(string, "main")<br>    commit = optional(string)<br>    tag    = optional(string)<br>    semver = optional(string)<br>  })</pre> | `{}` | no |
 | <a name="input_url"></a> [url](#input\_url) | URL of the git repository | `string` | n/a | yes |
 

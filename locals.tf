@@ -1,5 +1,6 @@
 locals {
-  name      = var.random_suffix ? join("-", [var.name, random_string.this.id]) : var.name
+  prefix    = "git-repository"
+  name      = join("-", [local.prefix, var.name])
   namespace = var.namespace
   url       = var.url
   interval  = var.interval
@@ -12,7 +13,7 @@ locals {
 }
 
 locals {
-  secret_name        = local.create_ssh_key ? "git-repository-${local.name}" : local.existing_secret
+  secret_name        = local.create_ssh_key ? local.name : local.existing_secret
   known_hosts_string = join("\n", local.known_hosts)
 }
 
