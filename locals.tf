@@ -13,8 +13,9 @@ locals {
 }
 
 locals {
-  secret_name        = local.create_ssh_key ? local.name : local.existing_secret
-  known_hosts_string = join("\n", local.known_hosts)
+  secret_name          = local.create_ssh_key ? local.name : local.existing_secret
+  known_hosts_string   = join("\n", local.known_hosts)
+  https_authentication = var.https_authentication
 }
 
 locals {

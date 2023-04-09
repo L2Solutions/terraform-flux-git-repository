@@ -55,3 +55,13 @@ variable "known_hosts" {
   default     = []
   type        = list(string)
 }
+
+variable "https_authentication" {
+  description = "HTTPS auth for accessing git"
+  type = object({
+    username = string
+    password = string
+  })
+  default   = null
+  sensitive = true
+}

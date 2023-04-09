@@ -68,6 +68,7 @@ No modules.
 | <a name="input_create_ssh_key"></a> [create\_ssh\_key](#input\_create\_ssh\_key) | Whether or not to create an ssh key(overrides `existing_secret`) | `bool` | `false` | no |
 | <a name="input_existing_secret"></a> [existing\_secret](#input\_existing\_secret) | Existing ssh/https secret in the namespace for auth | `string` | `null` | no |
 | <a name="input_git_implementation"></a> [git\_implementation](#input\_git\_implementation) | Git implementation to use, use libgit2 for Azure | `string` | `"go-git"` | no |
+| <a name="input_https_authentication"></a> [https\_authentication](#input\_https\_authentication) | HTTPS auth for accessing git | <pre>object({<br>    username = string<br>    password = string<br>  })</pre> | `null` | no |
 | <a name="input_interval"></a> [interval](#input\_interval) | How frequently to pull changes from the source repository | `string` | `"1m0s"` | no |
 | <a name="input_known_hosts"></a> [known\_hosts](#input\_known\_hosts) | List of known SSH hosts for key | `list(string)` | `[]` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name of the GitRepository resource | `string` | n/a | yes |
