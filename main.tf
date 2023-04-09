@@ -12,8 +12,12 @@ resource "tls_private_key" "this" {
   ecdsa_curve = "P521"
 }
 
+locals {
+  create_git_secret = local.create_ssh_key || local.https_authentication != null
+}
+
 resource "kubernetes_secret" "this" {
-  count = local.create_ssh_key ? 1 : 0
+  count = local.create_git_secret ? 1 : 0
 
   depends_on = [helm_release.this]
 
@@ -24,9 +28,10 @@ resource "kubernetes_secret" "this" {
     labels      = {}
   }
 
-  data = {
+  data = local.create_ssh_key ? {
     identity       = tls_private_key.this[0].private_key_pem
     "identity.pub" = tls_private_key.this[0].public_key_pem
     known_hosts    = local.known_hosts_string
-  }
+  } : local.https_authentication
 }
+
