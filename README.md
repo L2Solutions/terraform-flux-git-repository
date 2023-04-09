@@ -73,7 +73,6 @@ No modules.
 | <a name="input_known_hosts"></a> [known\_hosts](#input\_known\_hosts) | List of known SSH hosts for key | `list(string)` | `[]` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name of the GitRepository resource | `string` | n/a | yes |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | Namespace location to create the GitRepository | `string` | `"flux-system"` | no |
-| <a name="input_random_suffix"></a> [random\_suffix](#input\_random\_suffix) | Add a random alpha-numeric suffix to resource names(prevents helm release collision) | `bool` | `true` | no |
 | <a name="input_ref"></a> [ref](#input\_ref) | Repo refs object | <pre>object({<br>    branch = optional(string, "main")<br>    commit = optional(string)<br>    tag    = optional(string)<br>    semver = optional(string)<br>  })</pre> | `{}` | no |
 | <a name="input_url"></a> [url](#input\_url) | URL of the git repository | `string` | n/a | yes |
 
